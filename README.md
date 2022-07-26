@@ -10,4 +10,10 @@ Collection of Snowflake Stored Procedures and UDFs that leverage Python.
 
 ## UDFs
 
-Incoming
+- Multiply an integer by three
+- Multiply two integers together
+- Multiply all integers in an array by another integer
+- Generate Snowflake-compliant key pairs for authentication
+- Generate fake names
+- Example to leverage external files via a mapping table
+- Example to leverage external libraries via xlrd.xldate
