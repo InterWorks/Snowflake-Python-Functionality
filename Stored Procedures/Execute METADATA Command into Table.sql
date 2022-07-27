@@ -23,45 +23,23 @@ $$
 ##################################################################################################################################################
 
 #########################################################################
-## Define function to confirm that a variable is populated
-
-def validate_variable_populated(REQUIRED_VARIABLES_OBJECT: dict) :
-
-  ## This function ensures that the provided variable is not blank/null
-  FUNCTION_RESULT = ''
-  FUNCTION_RESULT_FLAG = False
-
-  VARIABLE_NAME = REQUIRED_VARIABLES_OBJECT["VARIABLE_NAME"]
-  VARIABLE_VALUE = REQUIRED_VARIABLES_OBJECT["VARIABLE_VALUE"]
-
-  if not VARIABLE_VALUE :
-    FUNCTION_RESULT_FLAG = True
-    FUNCTION_RESULT = f"Failed: {VARIABLE_NAME} parameter must be populated"
-
-  return [FUNCTION_RESULT, FUNCTION_RESULT_FLAG]
-
-#########################################################################
-## Error if any variables are not provided
+## Error if any required variables are not provided
 
 def validate_variables_list(REQUIRED_VARIABLES_LIST: list) :
 
   FUNCTION_RESULT = ''
   FUNCTION_RESULT_FLAG = False
 
-  ## Loop through the list of variables defined above and execute the validate_variable_populated function
-  ## for each one, returning an error that ends the procedure early if any variables are found to be blank/null
-  REQUIRED_VARIABLES_VALIDATION = list(map(validate_variable_populated, REQUIRED_VARIABLES_LIST))
-
-  ## Use list comprehension to filter this to failed members
-  REQUIRED_VARIABLES_VALIDATION_FAILED = [[x, y] for [x, y] in REQUIRED_VARIABLES_VALIDATION if y == True]
+  ## Use list comprehension to filter list of required variables to those with an empty or None value
+  INVALID_REQUIRED_VARIABLES_LIST = [x["VARIABLE_NAME"] for x in REQUIRED_VARIABLES_LIST if x["VARIABLE_VALUE"] == None or len(x["VARIABLE_VALUE"]) == 0]
 
   ## If any failed members are found, combine the error messages 
-  if len(REQUIRED_VARIABLES_VALIDATION_FAILED) > 0 :
-    REQUIRED_VARIABLES_VALIDATION_ERROR_MESSAGES = [y for [x, y] in REQUIRED_VARIABLES_VALIDATION_FAILED]
+  if len(INVALID_REQUIRED_VARIABLES_LIST) > 0 :
+    REQUIRED_VARIABLES_VALIDATION_ERROR_MESSAGES = [f"Failed: {VARIABLE_NAME} parameter must be populated" for VARIABLE_NAME in INVALID_VARIABLES_LIST]
     REQUIRED_VARIABLES_VALIDATION_ERROR_MESSAGES_COMBINED = ',\n'.join(REQUIRED_VARIABLES_VALIDATION_ERROR_MESSAGES)
     FUNCTION_RESULT = REQUIRED_VARIABLES_VALIDATION_ERROR_MESSAGES_COMBINED
     FUNCTION_RESULT_FLAG = True
-  
+
   return [FUNCTION_RESULT, FUNCTION_RESULT_FLAG]
 
 ##################################################################################################################################################
