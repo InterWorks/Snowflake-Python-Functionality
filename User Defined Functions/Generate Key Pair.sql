@@ -17,7 +17,7 @@ $$
 from cryptography.hazmat.primitives import serialization as crypto_serialization
 from cryptography.hazmat.primitives.asymmetric import rsa
 
-# Define main function which generates a key pair
+# Define main function which generates a Snowflake-compliant key pair
 def generate_key_pair_py():
   keySize = 2048
   
