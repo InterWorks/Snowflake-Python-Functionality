@@ -18,7 +18,7 @@ LIST @STG_FILES_FOR_UDFS;
 -- with the following commands in a local
 -- SnowSQL console:
 /* --snowsql
-snowsql -a my.account -u my_user -r my_role --private-key-path "path\to\my\ssh\key.p8"
+snowsql -a my.account -u my_user -r my_role --private-key-path "path\to\my\ssh\key"
 
 PUT 'FILE://C:/My/Path/To/Dummy Mapping File.xlsx' @STG_FILES_FOR_UDFS AUTO_COMPRESS = FALSE ;
 */

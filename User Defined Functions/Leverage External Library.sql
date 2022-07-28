@@ -21,7 +21,7 @@ LIST @STG_FILES_FOR_UDFS;
 -- with the following commands in a local
 -- SnowSQL console:
 /* --snowsql
-snowsql -a my.account -u my_user -r my_role --private-key-path "path\to\my\ssh\key.p8"
+snowsql -a my.account -u my_user -r my_role --private-key-path "path\to\my\ssh\key"
 
 PUT 'FILE://C:/My/Path/To/lib/Site-Packages/xlrd/xldate.py' @STG_FILES_FOR_UDFS/xlrd AUTO_COMPRESS = FALSE ;
 */
