@@ -6,7 +6,7 @@ Collection of Snowflake Stored Procedures and UDFs that leverage Python.
 ## Stored Procedures
 
 - Execute a Snowflake METADATA command into a destination table
-- Demonstrating simple concepts
+- Demonstrating concepts
   - Multiply an integer by three
   - Multiply two integers together
   - Multiply all integers in an array by another integer
@@ -16,6 +16,8 @@ Collection of Snowflake Stored Procedures and UDFs that leverage Python.
   - Basic version of executing a Snowflake METADATA command into a destination table
   - Example of manipulating data with Pandas
   - Generate a key pair for user authentication and apply it to a user (not best practice as private key may be visible in logs)
+  - Example to leverage external files via a mapping table
+  - Example to leverage external libraries via xlrd.xldate
 
 ## UDFs
 
