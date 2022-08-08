@@ -1,0 +1,4 @@
+snowsql*
+__pycache__*
+*snowflake_connection_parameters.json
+.streamlit*
