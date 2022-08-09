@@ -116,7 +116,11 @@ Configuring Conda to work with Python through VSCode requires you to set up a be
 
 The Python scripts are configured to ingest a snowflake_connection_parameters dictionary and use it to establish connections to Snowflake.
 
-The dictionary may either be provided as a locally stored .json file or as part of a Streamlit secrets .toml file.
+The dictionary may either be provided as a locally stored .json file, as environment variables, or as part of a Streamlit secrets .toml file.
+
+Note that we have included a default role and warehouse here. Unfortunately, at time of writing it appears that Snowpark sessions will leverage your default role in a session without being explicitly told, but it will not leverage a default warehouse unless explicitly told. I find it to be safer and easier to just provide the details of both here, especially if you do not want your Snowpark connection to leverage your Snowflake user's standard default role.
+
+#### Connection parameters in a local JSON file
 
 If using a locally stored .json file, this file should be created in the root directory as this repository and should match the format below. This is not synced with git (currently in `.gitignore` to avoid security breaches).
 
@@ -128,13 +132,16 @@ If using a locally stored .json file, this file should be created in the root di
   "default_warehouse" : "<default warehouse>", // Enter "None" if not required
   "default_database" : "<default database>", // Enter "None" if not required
   "default_schema" : "<default schema>", // Enter "None" if not required
-  "private_key_path" : "path\\to\\private\\key", // Enter "None" if not required, in which case password will be used
+  "private_key_path" : "path\\to\\private\\key", // Enter "None" if not required, in which case private key plain text or password will be used
+  "private_key_plain_text" : "-----BEGIN PRIVATE KEY-----\nprivate\nkey\nas\nplain\ntext\n-----END PRIVATE KEY-----", // Not best practice but may be required in some cases. Ignored if private key path is provided
   "private_key_passphrase" : "<passphrase>", // Enter "None" if not required
-  "password" : "<password>" // Enter "None" if not required, ignored if private key path is provided
+  "password" : "<password>" // Enter "None" if not required, ignored if private key path or private key plain text is provided
 }
 ```
 
-If using a locally stored streamlit secrets file, this file should be created in a subdirectory called .streamlit within the root directory as this repository and should match the format below. This is not synced with git (currently in `.gitignore` to avoid security breaches).
+#### Connection parameters via Streamlit secrets
+
+If using a streamlit secrets file, this file should be created in a subdirectory called .streamlit within the root directory as this repository and should match the format below. This is not synced with git (currently in `.gitignore` to avoid security breaches). Alternatively if deploying Streamlit remotely, the secrets should be entered in the Streamlit development interface.
 
 ```toml
 [snowflake_connection_parameters]
@@ -144,24 +151,44 @@ default_role = "<default role>" ## Enter "None" if not required
 default_warehouse = "<default warehouse>" ## Enter "None" if not required
 default_database = "<default database>" ## Enter "None" if not required
 default_schema = "<default schema>" ## Enter "None" if not required
-private_key_path =  "path\\to\\private\\key" ## Enter "None" if not required, in which case password will be used
+private_key_path =  "path\\to\\private\\key" ## Enter "None" if not required, in which case private key plain text or password will be used
+private_key_plain_text =  "-----BEGIN PRIVATE KEY-----\nprivate\nkey\nas\nplain\ntext\n-----END PRIVATE KEY-----" ## Not best practice but may be required in some cases. Ignored if private key path is provided
 private_key_passphrase = "<passphrase>" ## Enter "None" if not required
-password = "<password>" ## Enter "None" if not required, ignored if private key path is provided
+password = "<password>" ## Enter "None" if not required, ignored if private key path or private key plain text is provided
 ```
 
-Note that we have included a default role and warehouse here. Unfortunately, at time of writing it appears that Snowpark sessions will leverage your default role in a session without being explicitly told, but it will not leverage a default warehouse unless explicitly told. I find it to be safer and easier to just provide the details of both here, especially if you do not want your Snowpark connection to leverage your Snowflake user's standard default role.
+#### Connection parameters via environment variables
 
-### Testing your connection with a parameters JSON file
+If using environment variables, they should match the format below.
 
-To simplify testing of your connection, execute the following steps in an Anaconda terminal, or directly run the `test_snowflake_connection_via_parameters_json.py` file step by step through VSCode or similar. Naturally you must first complete the step above to create your locally stored .json file.
+```shell
+SNOWFLAKE_ACCOUNT : "<account>[.<region>][.<cloud provider>]"
+SNOWFLAKE_USER : "<username>"
+SNOWFLAKE_DEFAULT_ROLE : "<default role>" ## Enter "None" if not required
+SNOWFLAKE_DEFAULT_WAREHOUSE : "<default warehouse>" ## Enter "None" if not required
+SNOWFLAKE_DEFAULT_DATABASE : "<default database>" ## Enter "None" if not required
+SNOWFLAKE_DEFAULT_SCHEMA : "<default schema>" ## Enter "None" if not required
+SNOWFLAKE_PRIVATE_KEY_PATH :  "path\\to\\private\\key" ## Enter "None" if not required, in which case private key plain text or password will be used
+SNOWFLAKE_PRIVATE_KEY_PLAIN_TEXT :  "-----BEGIN PRIVATE KEY-----\nprivate\nkey\nas\nplain\ntext\n-----END PRIVATE KEY-----" ## Not best practice but may be required in some cases. Ignored if private key path is provided
+SNOWFLAKE_PRIVATE_KEY_PASSPHRASE : "<passphrase>" ## Enter "None" if not required
+SNOWFLAKE_PASSWORD : "<password>" ## Enter "None" if not required, ignored if private key path or private key plain text is provided
+```
+
+### Testing your Snowpark connection
+
+This section contains steps to simplify testing of your Snowpark connection. Naturally, these tests will only be successful if you have configured the corresponding parameters as detailed above.
+
+#### Testing your Snowpark connection with a parameters JSON file
+
+Execute the following steps in an Anaconda terminal, or directly run the `connection_tests/test_snowpark_connection_via_parameters_json.py` file step by step through VSCode or similar.
 
 ```powershell
-activate py38_snowpark
+conda activate py38_snowpark
 cd path/to/this/repo
-python run "test_snowflake_connection_via_parameters_json.py"
+python run "connection_tests/test_snowpark_connection_via_parameters_json.py"
 ```
 
-### Testing your connection with streamlit secrets
+#### Testing your Snowpark connection with streamlit secrets
 
 Please note that this will not work by default as we have not included streamlit in the `requirements.txt` file by default. You will need to add this to the requirements file and install it into your environment, or you can install it manually with the following command.
 
@@ -169,10 +196,70 @@ Please note that this will not work by default as we have not included streamlit
 conda install --name py38_snowpark streamlit
 ```
 
-To simplify testing of your connection, execute the following steps in an Anaconda terminal, or directly run the `test_snowflake_connection_via_streamlit_secrets.py` file step by step through VSCode or similar. Naturally you must first complete the step above to create your locally stored streamlit secrets file.
+Execute the following steps in an Anaconda terminal, or directly run the `connection_tests/test_snowpark_connection_via_streamlit_secrets.py` file step by step through VSCode or similar.
 
 ```powershell
-activate py38_snowpark
+conda activate py38_snowpark
 cd path/to/this/repo
-python run "test_snowflake_connection_via_streamlit_secrets.py"
+python run "connection_tests/test_snowpark_connection_via_streamlit_secrets.py"
+```
+
+#### Testing your Snowpark connection with environment variables
+
+Execute the following steps in an Anaconda terminal, or directly run the `connection_tests/test_snowpark_connection_via_environment_variables.py` file step by step through VSCode or similar.
+
+```powershell
+conda activate py38_snowpark
+cd path/to/this/repo
+python run "connection_tests/test_snowpark_connection_via_environment_variables.py"
+```
+
+### Testing your Snowpipe connection
+
+This section contains steps to simplify testing of your Snowpipe connection. Naturally, these tests will only be successful if you have configured either a local JSON file or a Streamlit secrets file as detailed above.
+
+Please note that this will not work by default as we have not included the Snowpipe ingest manager package in the `requirements.txt` file, as it currently does not sit on any Anaconda channels, to my knowledge.
+
+You will need to execute the following steps to first install `pip` into your Anaconda environment, and then to install `snowflake-ingest`.
+
+```powershell
+conda activate py38_snowpark
+conda install --name py38_snowpark pip
+"path\to\.conda\envs\py38_snowpark\Scripts\pip.exe" install snowflake-ingest
+```
+
+#### Testing your Snowpipe connection with a parameters JSON file
+
+Execute the following steps in an Anaconda terminal, or directly run the `connection_tests/test_snowpipe_connection_via_parameters_json.py` file step by step through VSCode or similar.
+
+```powershell
+conda activate py38_snowpark
+cd path/to/this/repo
+python run "connection_tests/test_snowpipe_connection_via_parameters_json.py"
+```
+
+#### Testing your Snowpipe connection with streamlit secrets
+
+Please note that this will not work by default as we have not included streamlit in the `requirements.txt` file by default. You will need to add this to the requirements file and install it into your environment, or you can install it manually with the following command.
+
+```powershell
+conda install --name py38_snowpark streamlit
+```
+
+Execute the following steps in an Anaconda terminal, or directly run the `connection_tests/test_snowpipe_connection_via_streamlit_secrets.py` file step by step through VSCode or similar.
+
+```powershell
+conda activate py38_snowpark
+cd path/to/this/repo
+python run "connection_tests/test_snowpipe_connection_via_streamlit_secrets.py"
+```
+
+#### Testing your Snowpipe connection with environment variables
+
+Execute the following steps in an Anaconda terminal, or directly run the `connection_tests/test_snowpipe_connection_via_environment_variables.py` file step by step through VSCode or similar.
+
+```powershell
+conda activate py38_snowpark
+cd path/to/this/repo
+python run "connection_tests/test_snowpipe_connection_via_environment_variables.py"
 ```
