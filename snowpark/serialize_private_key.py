@@ -29,7 +29,7 @@ def load_private_key_from_bytes(
     , private_key_passphrase_encoded: bytes = None
   ):
   
-  ### Retrieve private key from path, leveraging passphrase if needed
+  ### Load private key, leveraging passphrase if needed
   private_key_loaded = serialization.load_pem_private_key(
       private_key_encoded
     , password = private_key_passphrase_encoded
