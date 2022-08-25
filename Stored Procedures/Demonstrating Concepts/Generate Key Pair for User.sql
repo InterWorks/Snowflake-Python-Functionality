@@ -71,10 +71,14 @@ def rotate_public_key_for_user(snowpark_session, username: str, old_public_key: 
   # using ''' for a multi-line string input
   # and formatted string literals to leverage variables
   # and .collect() to ensure execution on Snowflake
-  snowpark_session.sql(f'''
-    ALTER USER "{username}"
-      SET RSA_PUBLIC_KEY_2 = '{old_public_key}'
-  ''').collect()
+  if old_public_key  is not None \
+    and len(old_public_key) > 0 \
+    and old_public_key != 'null' \
+    :
+    snowpark_session.sql(f'''
+      ALTER USER "{username}"
+        SET RSA_PUBLIC_KEY_2 = '{old_public_key}'
+    ''').collect()
 
   snowpark_session.sql(f'''
     ALTER USER "{username}"
