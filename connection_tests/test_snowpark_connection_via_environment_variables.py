@@ -2,7 +2,7 @@
 # Test connection to Snowpark leveraging environment variables
 
 ## Import required function
-from snowpark.snowpark_session_builder import build_snowpark_session_via_environment_variables
+from snowpark.snowpark_session_builder import build_snowpark_session_via_environment_variables as build_snowpark_session
 
 '''
 ## Optional section to set specific environment variables temporarily
@@ -21,8 +21,8 @@ os.environ[SNOWFLAKE_PASSWORD] = "<password>" ## Enter "None" if not required, i
 '''
 
 ## Generate Snowpark session
-snowpark_session_via_environment_variables = build_snowpark_session_via_environment_variables()
+snowpark_session = build_snowpark_session()
 
 ## Simple commands to test the connection by listing the databases in the environment
-df_test_via_environment_variables = snowpark_session_via_environment_variables.sql('SHOW DATABASES')
-df_test_via_environment_variables.show()
+df_test = snowpark_session.sql('SHOW DATABASES')
+df_test.show()

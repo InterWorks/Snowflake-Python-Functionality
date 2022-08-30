@@ -2,17 +2,17 @@
 # Test connection to Snowpipe leveraging locally-stored JSON file
 
 ## Import required function
-from snowpark.snowpipe_ingest_manager_builder import build_snowpipe_ingest_manager_via_parameters_json
+from snowpark.snowpipe_ingest_manager_builder import build_snowpipe_ingest_manager_via_parameters_json as build_snowpipe_ingest_manager
 
 ## If desired, populate a target pipe name to test the connection to
 target_pipe_name = None
 
 ## Generate Snowpark session
-snowpipe_ingest_manager_via_parameters_json = build_snowpipe_ingest_manager_via_parameters_json(target_pipe_name=target_pipe_name)
+snowpipe_ingest_manager = build_snowpipe_ingest_manager(target_pipe_name=target_pipe_name)
 
 ### Simple commands to test the connection by listing the databases in the environment
 try :
-  snowpipe_response = snowpipe_ingest_manager_via_parameters_json.ingest_files([])
+  snowpipe_response = snowpipe_ingest_manager.ingest_files([])
   assert(snowpipe_response['responseCode'] == 'SUCCESS')
 
   print('Test successful')
