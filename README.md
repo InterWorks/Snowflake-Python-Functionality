@@ -5,21 +5,24 @@ Collection of Snowflake Stored Procedures and UDFs that leverage Python.
 
 ## Stored Procedures
 
+The following stored procedures are available within the repository. The code for each is provided in two forms so that it can be leveraged from within the Snowflake UI or as part of a Snowpark for Python script.
+
+- Multiply an integer by three
+- Multiply two integers together
+- Multiply all integers in an array by another integer
+- Retrieve current user and date
+- Create and modify a table via the SQL method
+- Use variables whilst creating and modifying a table via the SQL method
+- Basic version of executing a Snowflake METADATA command into a destination table
+- Example of manipulating data with Pandas
+- Generate a key pair for user authentication and apply it to a user (not best practice as private key may be visible in logs)
+- Example to leverage external files via a mapping table
+- Example to leverage external libraries via xlrd.xldate
 - Execute a Snowflake METADATA command into a destination table
-- Demonstrating concepts
-  - Multiply an integer by three
-  - Multiply two integers together
-  - Multiply all integers in an array by another integer
-  - Retrieve current user and date
-  - Create and modify a table via the SQL method
-  - Use variables whilst creating and modifying a table via the SQL method
-  - Basic version of executing a Snowflake METADATA command into a destination table
-  - Example of manipulating data with Pandas
-  - Generate a key pair for user authentication and apply it to a user (not best practice as private key may be visible in logs)
-  - Example to leverage external files via a mapping table
-  - Example to leverage external libraries via xlrd.xldate
 
 ## UDFs
+
+The following User Defined Functions (UDFs) are available within the repository. The code for each is provided in two forms so that it can be leveraged from within the Snowflake UI or as part of a Snowpark for Python script.
 
 - Multiply an integer by three
 - Multiply two integers together
