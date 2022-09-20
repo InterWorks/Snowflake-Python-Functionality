@@ -44,10 +44,12 @@ snowpark_session.sproc.register(
   , name = 'SNOWPARK_BASIC_METADATA_COMMAND_TO_TABLE'
   , replace = True
   , stage_location = '@SPROC_STAGE'
-  # , somehow execute this as CALLER ?
+  , execute_as = 'CALLER'
 )
 
-### Update stored procedure to execute as CALLER
+### Optionally update stored procedure to execute as CALLER
+### if your version of snowflake.snowpark.python does not
+### support the execute_as option
 snowpark_session.sql('''
   ALTER PROCEDURE IF EXISTS SNOWPARK_BASIC_METADATA_COMMAND_TO_TABLE(VARCHAR, VARCHAR) EXECUTE AS CALLER
 ''').collect()
