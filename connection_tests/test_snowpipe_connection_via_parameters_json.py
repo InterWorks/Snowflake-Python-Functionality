@@ -2,7 +2,7 @@
 # Test connection to Snowpipe leveraging locally-stored JSON file
 
 ## Import required function
-from snowpark.snowpipe_ingest_manager_builder import build_snowpipe_ingest_manager_via_parameters_json as build_snowpipe_ingest_manager
+from interworks_snowpark.snowpipe_ingest_manager_builder import build_snowpipe_ingest_manager_via_parameters_json as build_snowpipe_ingest_manager
 
 ## If desired, populate a target pipe name to test the connection to
 target_pipe_name = None

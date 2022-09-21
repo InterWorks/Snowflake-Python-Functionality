@@ -7,7 +7,7 @@
 ## Establish Snowpark session leveraging locally-stored JSON file
 
 ### Import required function
-from snowpark.snowpark_session_builder import build_snowpark_session_via_parameters_json as build_snowpark_session
+from interworks_snowpark.snowpark_session_builder import build_snowpark_session_via_parameters_json as build_snowpark_session
 import snowflake.snowpark
 
 ### Generate Snowpark session

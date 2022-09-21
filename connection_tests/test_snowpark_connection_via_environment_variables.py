@@ -2,7 +2,7 @@
 # Test connection to Snowpark leveraging environment variables
 
 ## Import required function
-from snowpark.snowpark_session_builder import build_snowpark_session_via_environment_variables as build_snowpark_session
+from interworks_snowpark.snowpark_session_builder import build_snowpark_session_via_environment_variables as build_snowpark_session
 
 '''
 ## Optional section to set specific environment variables temporarily

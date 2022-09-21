@@ -2,7 +2,7 @@
 # Test connection to Snowpark leveraging Streamlit secrets
 
 ## Import required function
-from snowpark.snowpark_session_builder import build_snowpark_session_via_streamlit_secrets as build_snowpark_session
+from interworks_snowpark.snowpark_session_builder import build_snowpark_session_via_streamlit_secrets as build_snowpark_session
 
 ## Generate Snowpark session
 snowpark_session = build_snowpark_session()

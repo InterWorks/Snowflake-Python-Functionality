@@ -2,7 +2,7 @@
 # Test connection to Snowpipe leveraging environment variables
 
 ## Import required function
-from snowpark.snowpipe_ingest_manager_builder import build_snowpipe_ingest_manager_via_environment_variables as build_snowpipe_ingest_manager
+from interworks_snowpark.snowpipe_ingest_manager_builder import build_snowpipe_ingest_manager_via_environment_variables as build_snowpipe_ingest_manager
 
 '''
 ## Optional section to set specific environment variables temporarily
