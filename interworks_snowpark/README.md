@@ -1,7 +1,7 @@
 
 # InterWorks Snowpark for Python
 
-To simplify creating Snowpark sessions for the enclosed Python scripts, a custom module called "interworks_snowpark" has been used. More details can be found in the "interworks_snowpark" subdirectory. This subdirectory also contains instructions on how to configure your local environment for Snowpark for Python, and pairs well with this [Definitive Guide to Snowflake Sessions with Snowpark for Python](https://interworks.com/blog/2022/09/02/a-definitive-guide-to-snowflake-sessions-with-snowpark-for-python/).
+This package has been created to simplify the creation of Snowpark for Python sessions and Snowpipe Ingest Manager objects. This package heavily leverages the main `snowflake-snowpark-python[pandas]` and `snowflake-ingest` packages from Snowflake.
 
 ## Articles
 
