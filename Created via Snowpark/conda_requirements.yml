@@ -1,0 +1,14 @@
+channels:
+  - https://repo.anaconda.com/pkgs/snowflake
+  - defaults
+dependencies:
+  - cryptography
+  - faker
+  - pandas
+  - pip
+  - regex
+  - snowflake-snowpark-python[pandas]
+  - streamlit
+  - xlrd
+  - pip:
+    - snowflake-ingest

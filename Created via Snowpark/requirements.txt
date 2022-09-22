@@ -1,0 +1,8 @@
+cryptography
+snowflake-snowpark-python[pandas]
+snowflake-ingest
+streamlit
+pandas
+regex
+xlrd
+faker

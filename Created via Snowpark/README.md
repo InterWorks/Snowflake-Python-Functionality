@@ -1,11 +1,11 @@
 
 # Snowflake Python Functionality
 
-Collection of Snowflake Stored Procedures and UDFs that leverage Python, along with a Python package to simplify connecting to Snowflake using Python.
+Collection of Snowflake stored procedure and UDFs that leverage Python, along with a Python package to simplify connecting to Snowflake using Python.
 
 ## InterWorks Snowpark for Python
 
-To simplify creating Snowpark sessions for the enclosed Python scripts, a custom module called "interworks_snowpark" has been used. More details can be found in the "interworks_snowpark" subdirectory. This subdirectory also contains instructions on how to configure your local environment for Snowpark for Python.
+To simplify creating Snowpark sessions for the enclosed Python scripts, a custom module called "interworks_snowpark" has been used. More details can be found in the "interworks_snowpark" subdirectory. This subdirectory also contains instructions on how to configure your local environment for Snowpark for Python, along with how you can leverage the `conda_requirements.yml` or `requirements.txt` files in this directory.
 
 ## Stored Procedures
 
@@ -42,12 +42,16 @@ To leverage third party packages from Anaconda within Snowflake, an ORGADMIN mus
 
 1. Using the ORGADMIN role in the SnowSight UI, navigate to `Admin` > `Billing` to accept the third party terms of usage
 
-    ![Snowpark Anaconda Terms](interworks_snowpark/images/Snowpark_Anaconda_Terms_1.png)
+    ![Snowpark Anaconda Terms](../interworks_snowpark/images/Snowpark_Anaconda_Terms_1.png)
 
 2. Confirm acknowledgement
 
-    ![Snowpark Anaconda Terms](interworks_snowpark/images/Snowpark_Anaconda_Terms_2.png)
+    ![Snowpark Anaconda Terms](../interworks_snowpark/images/Snowpark_Anaconda_Terms_2.png)
 
 3. The screen will then update to reflect the accepted terms
 
-    ![Snowpark Anaconda Terms](interworks_snowpark/images/Snowpark_Anaconda_Terms_3.png)
+    ![Snowpark Anaconda Terms](../interworks_snowpark/images/Snowpark_Anaconda_Terms_3.png)
+
+## Articles
+
+Many of the stored procedures and UDFs above are paired with articles available in the [Snowflake with Python series on the InterWorks blog](https://interworks.com/blog/series/snowflake-with-python).
