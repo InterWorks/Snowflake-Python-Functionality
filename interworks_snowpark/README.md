@@ -3,6 +3,29 @@
 
 This package has been created to simplify the creation of Snowpark for Python sessions and Snowpipe Ingest Manager objects. This package heavily leverages the main `snowflake-snowpark-python[pandas]` and `snowflake-ingest` packages from Snowflake.
 
+## Contents
+
+- [InterWorks Snowpark for Python](#interworks-snowpark-for-python)
+  - [Contents](#contents)
+  - [Articles](#articles)
+  - [Third Party Packages from Anaconda](#third-party-packages-from-anaconda)
+  - [Local Installation](#local-installation)
+    - [Quick Conda Environment Creation](#quick-conda-environment-creation)
+    - [Additional Package Installation using the Conda Snowflake Channel](#additional-package-installation-using-the-conda-snowflake-channel)
+    - [Configuring Conda for Visual Studio Code](#configuring-conda-for-visual-studio-code)
+  - [Connection Parameters](#connection-parameters)
+    - [Connection parameters in a local JSON file](#connection-parameters-in-a-local-json-file)
+    - [Connection parameters via Streamlit secrets](#connection-parameters-via-streamlit-secrets)
+    - [Connection parameters via environment variables](#connection-parameters-via-environment-variables)
+  - [Testing your Snowpark connection](#testing-your-snowpark-connection)
+    - [Testing your Snowpark connection with a parameters JSON file](#testing-your-snowpark-connection-with-a-parameters-json-file)
+    - [Testing your Snowpark connection with streamlit secrets](#testing-your-snowpark-connection-with-streamlit-secrets)
+    - [Testing your Snowpark connection with environment variables](#testing-your-snowpark-connection-with-environment-variables)
+  - [Testing your Snowpipe connection](#testing-your-snowpipe-connection)
+    - [Testing your Snowpipe connection with a parameters JSON file](#testing-your-snowpipe-connection-with-a-parameters-json-file)
+    - [Testing your Snowpipe connection with streamlit secrets](#testing-your-snowpipe-connection-with-streamlit-secrets)
+    - [Testing your Snowpipe connection with environment variables](#testing-your-snowpipe-connection-with-environment-variables)
+
 ## Articles
 
 Much of the content in this README is also discussed in the [Definitive Guide to Snowflake Sessions with Snowpark for Python](https://interworks.com/blog/2022/09/05/a-definitive-guide-to-snowflake-sessions-with-snowpark-for-python), which is part of the [Snowflake with Python series on the InterWorks blog](https://interworks.com/blog/series/snowflake-with-python).
