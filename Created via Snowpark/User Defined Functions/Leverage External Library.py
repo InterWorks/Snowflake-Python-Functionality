@@ -30,7 +30,7 @@ def leverage_external_library(input_int_py: int):
 ### Add packages and data types
 from snowflake.snowpark.types import StringType
 from snowflake.snowpark.types import IntegerType
-snowpark_session.add_import('User Defined Functions/Supporting Files/xlrd')
+snowpark_session.add_import('Supporting Files/xlrd')
 
 ### Upload UDF to Snowflake
 snowpark_session.udf.register(

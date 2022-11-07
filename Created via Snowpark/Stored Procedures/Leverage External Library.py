@@ -35,7 +35,7 @@ def leverage_external_library(
 from snowflake.snowpark.types import StringType
 from snowflake.snowpark.types import IntegerType
 snowpark_session.add_packages('snowflake-snowpark-python')
-snowpark_session.add_import('Stored Procedures/Supporting Files/xlrd')
+snowpark_session.add_import('Supporting Files/xlrd')
 
 ### Upload Stored Produre to Snowflake
 snowpark_session.sproc.register(

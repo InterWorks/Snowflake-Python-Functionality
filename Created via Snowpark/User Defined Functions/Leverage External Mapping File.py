@@ -43,7 +43,7 @@ def leverage_external_mapping_file(input_item_py: str):
 ### Add packages and data types
 from snowflake.snowpark.types import StringType
 snowpark_session.add_packages(['pandas', 'openpyxl'])
-snowpark_session.add_import('User Defined Functions/Supporting Files/Dummy Mapping File.xlsx')
+snowpark_session.add_import('Supporting Files/Dummy Mapping File.xlsx')
 
 ### Upload UDF to Snowflake
 snowpark_session.udf.register(

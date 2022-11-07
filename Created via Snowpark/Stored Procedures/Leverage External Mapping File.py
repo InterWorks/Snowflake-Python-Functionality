@@ -45,7 +45,7 @@ def leverage_external_mapping_file(
 ### Add packages and data types
 from snowflake.snowpark.types import StringType
 snowpark_session.add_packages('snowflake-snowpark-python', 'pandas', 'openpyxl')
-snowpark_session.add_import('Stored Procedures/Supporting Files/Dummy Mapping File.xlsx')
+snowpark_session.add_import('Supporting Files/Dummy Mapping File.xlsx')
 
 ### Upload Stored Produre to Snowflake
 snowpark_session.sproc.register(
