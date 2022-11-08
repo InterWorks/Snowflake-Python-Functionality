@@ -41,6 +41,20 @@ The following User Defined Functions (UDFs) are available within the repository.
 - Example to leverage external files via a mapping table
 - Example to leverage external libraries via xlrd.xldate
 
+## UDTFs
+
+The following User Defined Table Functions (UDTFs) are available within the repository. The code for each is provided in two forms so that it can be leveraged from within the Snowflake UI or as part of a Snowpark for Python script.
+
+- Hello world
+- Hello world with an input
+- Gemerate a calendar table between two dates
+- Calculate the running sum of a given measure within a partition
+- Calculate the average of a given measure within a partition
+- Train and test an Auto ARIMA predictive model
+- Train a linear regression model and use it to predict further values
+- Example to leverage external files via a mapping table
+- Example to leverage external libraries via xlrd.xldate
+
 ## Third Party Packages from Anaconda
 
 To leverage third party packages from Anaconda within Snowflake, an ORGADMIN must first accept the [third party terms of usage](https://www.snowflake.com/legal/third-party-terms/). More details can be found [here](https://docs.snowflake.com/en/developer-guide/udf/python/udf-python-packages.html#using-third-party-packages-from-anaconda). This only needs to be enabled once for the entire organisation.

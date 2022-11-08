@@ -6,3 +6,5 @@ pandas
 regex
 xlrd
 faker
+pmdarima
+scikit-learn

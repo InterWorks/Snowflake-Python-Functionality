@@ -10,5 +10,7 @@ dependencies:
   - snowflake-snowpark-python[pandas]
   - streamlit
   - xlrd
+  - pmdarima
+  - scikit-learn
   - pip:
     - snowflake-ingest
