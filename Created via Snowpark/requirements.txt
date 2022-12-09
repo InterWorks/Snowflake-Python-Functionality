@@ -8,3 +8,4 @@ xlrd
 faker
 pmdarima
 scikit-learn
+croniter

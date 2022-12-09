@@ -40,6 +40,7 @@ The following User Defined Functions (UDFs) are available within the repository.
 - Generate fake names
 - Example to leverage external files via a mapping table
 - Example to leverage external libraries via xlrd.xldate
+- Determine next event from CRON
 
 ## UDTFs
 

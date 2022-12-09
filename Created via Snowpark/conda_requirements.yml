@@ -12,5 +12,6 @@ dependencies:
   - xlrd
   - pmdarima
   - scikit-learn
+  - croniter
   - pip:
     - snowflake-ingest
