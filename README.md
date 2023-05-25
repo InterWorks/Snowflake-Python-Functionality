@@ -58,16 +58,4 @@ The following User Defined Table Functions (UDTFs) are available within the repo
 
 ## Third Party Packages from Anaconda
 
-To leverage third party packages from Anaconda within Snowflake, an ORGADMIN must first accept the [third party terms of usage](https://www.snowflake.com/legal/third-party-terms/). More details can be found [here](https://docs.snowflake.com/en/developer-guide/udf/python/udf-python-packages.html#using-third-party-packages-from-anaconda). This only needs to be enabled once for the entire organisation.
-
-1. Using the ORGADMIN role in the SnowSight UI, navigate to `Admin` > `Billing` to accept the third party terms of usage
-
-    ![Snowpark Anaconda Terms](interworks_snowpark/images/Snowpark_Anaconda_Terms_1.png)
-
-2. Confirm acknowledgement
-
-    ![Snowpark Anaconda Terms](interworks_snowpark/images/Snowpark_Anaconda_Terms_2.png)
-
-3. The screen will then update to reflect the accepted terms
-
-    ![Snowpark Anaconda Terms](interworks_snowpark/images/Snowpark_Anaconda_Terms_3.png)
+To leverage third party packages from Anaconda within Snowflake, an ORGADMIN must first accept the [third party terms of usage](https://www.snowflake.com/legal/third-party-terms/). More details can be found [here](https://docs.snowflake.com/en/developer-guide/udf/python/udf-python-packages.html#using-third-party-packages-from-anaconda). Instructions can be found [here](https://github.com/interworks/InterWorks-Snowpark-for-Python/tree/e2da0a315af5496b354845542a68277ae234958f#third-party-packages-from-anaconda).
