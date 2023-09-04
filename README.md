@@ -7,6 +7,10 @@ Collection of Snowflake Stored Procedures and UDFs that leverage Python, along w
 
 Many of the stored procedures and UDFs above are paired with articles available in the [Snowflake with Python series on the InterWorks blog](https://interworks.com/blog/series/snowflake-with-python).
 
+## License
+
+This project is licensed under the terms of the MIT license. InterWorks, Inc. makes this code available with no support and makes no guarantees on posted issues, pull requests, or feedback posted here. Click [here](https://www.interworks.com/contact) to can contact InterWorks, Inc. directly.
+
 ## Shared InterWorks Snowpark Package
 
 To simplify creating Snowpark sessions for the enclosed scripts, a custom module called "interworks_snowpark" has been used. More details can be found in the [InterWorks Snowpark for Python GitHub repository](https://github.com/interworks/InterWorks-Snowpark-for-Python). This repository also contains instructions on how to configure your local environment for Snowpark for Python, and pairs well with this [Definitive Guide to Snowflake Sessions with Snowpark for Python](https://interworks.com/blog/2022/09/02/a-definitive-guide-to-snowflake-sessions-with-snowpark-for-python/).
